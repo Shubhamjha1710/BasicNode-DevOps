@@ -21,6 +21,10 @@ jobs:
     needs: moduleInstallation
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
       - name: Run test command
         run: npm run test
       - name: Testing Complete
@@ -30,6 +34,10 @@ jobs:
     needs: [moduleInstallation,Test]
     runs-on: ubuntu-latest
     steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
       - name: Build Project
         run: npm run build
       
