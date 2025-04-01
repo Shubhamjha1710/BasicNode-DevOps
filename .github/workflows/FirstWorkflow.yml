@@ -17,7 +17,7 @@ jobs:
       - name: Dependencies Installation Job Complete
         run: echo "Module Installation Done"  
       - name: Run Lint command
-        run: npm lint
+        run: npm run lint
       - name: Lint command excuted 
         run: echo "Lint command executed"
 
