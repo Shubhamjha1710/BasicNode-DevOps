@@ -1,0 +1,42 @@
+# triggers
+# 1. Push, manual trigger
+# Jobs:
+# 1. Test and lint the project 
+# 2. Build Project
+name: FirstWorkflow
+on: [push, workflow_dispatch]
+
+jobs:
+  moduleInstallation:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: SetUp node module
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Dependencies Installation Job Complete
+        run: echo "Module Installation Done"  
+      - name: Run Lint command
+        run: npm lint
+      - name: Lint command excuted 
+        run: echo "Lint command executed"
+
+  Test:
+    needs: moduleInstallation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test command
+        run: npm test
+      - name: Testing Complete
+        run: echo "Test command execution completed"
+
+  Build:
+    needs: [moduleInstallation,Test]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Build Project
+        run: npm build
+      
+    
