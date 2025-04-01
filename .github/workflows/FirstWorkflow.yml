@@ -13,7 +13,9 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd BasicNode-DevOps
+          npm install
       - name: Dependencies Installation Job Complete
         run: echo "Module Installation Done"  
       - name: Run Lint command
